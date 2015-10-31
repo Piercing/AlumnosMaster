@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- utilizamos la directiva 'ng-aap' para inicializar la aplicación angular.js -->
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <title>Cuaderno Alumnos</title>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+</head>
+
+<!-- utilizamos la directiva 'ng-controller' y se la asignamos a 'AlumnosController',
+ definimos así la sección del DOM que está ahora dentro del 'scope' de el alcance de
+ del controller 'AlumnosController-->
+<body ng-controller="AlumnosController">
+
+<h1>Alumnos Master Keepcoding</h1>
+
+<div class="wrapper">
+    <!-- utilizamos la directiva 'ng-repeat' muestra una lista de items de una colección
+     Duplica tantas veces el elemento del DOM como items halla en el modelo.
+     Podemos acceder ahora a las propiedadesd de alumnos que están dentro del
+     alcance del scope-->
+    <div class="contact-item" ng-repeat="alumno in alumnos | orderBy:'curso' ">
+        <div> {{alumno.nombre}} - {{alumno.telefono}}</div>
+        <span>{{alumno.curso}} </span>
+    </div>
+</div>
+<br/>
+<center><button ng-click="ShowForm()" ng-hide="formVisibility">Añadir Contacto</button></center>
+
+<div ng-show="formVisibility" class="wrapper">
+    <!-- Aplicamos aquí el 'two-way data binding' o enlace de datos en dos direcciones
+    puede pasar de la plantilla (Template) a la vista (View) o del modelo a la vista o
+    de la vista al modelo (Model)-->
+    <h2>Añadir alumnos al Master </h2>
+    Nombre:<input type="text" ng-model="nuevoAlumno.nombre"></input>
+    Teléfono:<input type="text" ng-model="nuevoAlumno.telefono"></input>
+    Curso:<input type="text" ng-model="nuevoAlumno.curso"></input>
+    <button ng-click="Save()">Guardar</button>
+</div>
+
+
+<!-- Cargamos la librería de AngularJS -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="angular.min.js" type="text/javascript"></script>
+<script src="scripts1.js" type="text/javascript"></script>
+
+</body>
+</html>
+
+
+
